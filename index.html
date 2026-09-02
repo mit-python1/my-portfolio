@@ -3,43 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mitali Mahajan — Portfolio</title>
-<meta name="description" content="Mitali Mahajan — biomedical engineering &amp; software portfolio.">
+<title>Mitali Mahajan Portfolio</title>
+<meta name="description" content="Mitali Mahajan biomedical engineering &amp; software portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=11">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap">
     <a class="logo" href="index.html">MITALI MAHAJAN</a>
-    <nav>
+    <nav aria-label="Primary">
       <ul class="nav-links">
-        <li><a href="projects.html" aria-current="page">Projects</a></li>
-        <li><a href="#">Undergrad Portfolio</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="https://mitalimahajan2209.wixsite.com/mitali-mahajan" target="_blank" rel="noopener">Foundations</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <section class="hero wrap">
-    <div>
-      <p class="eyebrow">Welcome to my portfolio</p>
-      <h1>Hello everyone!</h1>
-      <p>I'm passionate about bringing creativity and innovation into medical device design. With a background in biomedical engineering, I love exploring how technology can make healthcare smarter, more effective, and more accessible.</p>
-      <p>Over time I've also developed a strong interest in software engineering. For me, the exciting part is finding ways to combine both worlds &mdash; using engineering skills to design devices, and software to power them with data, intelligence, and usability.</p>
-      <p>This space is where I share the projects I've worked on, the skills I've built, and the ideas I'm chasing. Thanks for stopping by &mdash; I hope you enjoy exploring my work!</p>
-      <p style="margin-top:28px;">
+    <div data-reveal-group>
+      <p class="eyebrow reveal">Engineering · Design · Software</p>
+      <h1 class="reveal">The best engineering disappears into the background.</h1>
+      <p class="reveal">Combining biomedical engineering and software, designing medical devices and building the intelligent software that powers them is something that grabs my attention. My goal is to build technology that makes healthcare smarter, more effective, and more accessible.</p>
+      <p class="reveal hero-cta">
         <a class="pill-btn" href="projects.html"><span class="dot"></span>Explore my projects</a>
       </p>
     </div>
-    <div class="hero-portrait">
-      <div class="bloom" aria-hidden="true"></div>
-      <img src="assets/img-000.jpg" alt="Mitali Mahajan smiling in front of white and pink bougainvillea flowers">
+    <div class="hero-portrait reveal">
+      <img src="assets/gradpic.jpeg" alt="Mitali Mahajan in cap and gown wearing a University of Michigan graduation stole">
     </div>
+  </section>
+
+  <section class="projects-intro wrap">
+    <p class="eyebrow">Selected work</p>
+    <h2>A few things I've built</h2>
+  </section>
+
+  <section class="project-grid wrap">
+
+    <a class="project-card" href="optical-imaging.html">
+      <div class="thumb"><img src="assets/img-001.jpg" alt="Photoacoustic optical imaging lab setup"></div>
+      <div class="card-body">
+        <h3>Optical Imaging Lab</h3>
+        <p>Built and aligned a photoacoustic light-and-sound probe for detecting gum infections.</p>
+        <span class="tag">Research</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="sling-health.html">
+      <div class="thumb"><img src="assets/img-003.jpg" alt="Sling Health prototyping session"></div>
+      <div class="card-body">
+        <h3>CPAP Mask Redesign</h3>
+        <p>Redesigned a CPAP mask interface to put patient comfort at the center.</p>
+        <span class="tag">Design</span>
+      </div>
+    </a>
+
+    <a class="project-card" href="ml-eeg.html">
+      <div class="thumb"><img src="assets/img-005.jpg" alt="Lehigh University campus sign"></div>
+      <div class="card-body">
+        <h3>EEG Biomarker Analysis</h3>
+        <p>Extracted features from EEG signals to surface hidden patterns of depression.</p>
+        <span class="tag">Machine Learning</span>
+      </div>
+    </a>
+
   </section>
 </main>
 
@@ -47,5 +85,6 @@
   &copy; 2026 Mitali Mahajan
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
