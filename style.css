@@ -102,7 +102,7 @@ h1, h2, h3 {
 
 /* ============ Layout shell ============ */
 .wrap {
-  max-width: 1080px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -425,13 +425,19 @@ html.js .reveal.is-visible {
   align-items: stretch;
 }
 
-/* Photo fills the height of the text column and crops to fit. */
+/* Graphic fills the height of the text column, shown whole. */
+.about-media {
+  position: relative;
+}
+
 .about-photo {
   position: relative;
   overflow: hidden;
+  height: 100%;
   min-height: 320px;
   border-radius: var(--radius);
   border: 1px solid #000;
+  background: var(--blue);
 }
 
 .about-photo img {
@@ -439,28 +445,104 @@ html.js .reveal.is-visible {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 38%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Default hint label, bottom-right of the graphic */
+.about-hint {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  z-index: 4;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--maize);
+  opacity: 0.85;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.about-media:hover .about-hint {
+  opacity: 0;
+}
+
+/* Darken + meaning overlay, revealed on hover */
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  padding: 26px 28px;
+  background: rgba(var(--blue-rgb), 0.88);
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.about-media:hover .about-overlay {
+  opacity: 1;
+}
+
+.about-overlay p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: #fff;
+}
+
+.about-overlay .about-overlay-eyebrow {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--maize);
+  line-height: 1.2;
 }
 
 .about-text p + p {
   margin-top: 16px;
 }
 
-/* About page — Skills & Tools row */
+/* About page — categorized Skills & Tools grid */
 .about-skills {
   padding: 40px 0 8px;
   text-align: center;
 }
 
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 44px;
+  margin-top: 26px;
+  text-align: left;
+}
+
+.skill-group-title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--blue);
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
 .skill-list {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .skill-list li {
@@ -473,29 +555,12 @@ html.js .reveal.is-visible {
   color: var(--blue);
 }
 
-/* "More" toggle — wrapper carries no pill, the button is the pill */
-.skill-list li.skill-more-wrap {
-  background: none;
-  border: 0;
-  padding: 0;
+@media (max-width: 900px) {
+  .skill-groups { grid-template-columns: repeat(2, 1fr); }
 }
 
-.skill-more {
-  font-family: inherit;
-  background: var(--fill);
-  border: 1px solid var(--fill-line);
-  border-radius: 999px;
-  padding: 10px 18px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--blue);
-  cursor: pointer;
-  transition: background 0.18s ease, border-color 0.18s ease;
-}
-
-.skill-more:hover {
-  background: var(--fill-hover);
-  border-color: var(--blue-bright);
+@media (max-width: 600px) {
+  .skill-groups { grid-template-columns: 1fr; }
 }
 
 .detail-caption {
@@ -703,4 +768,173 @@ html.js .reveal.is-visible {
 a:focus-visible, button:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 3px;
+}
+
+/* ============================================
+   Single-screen pages — about / skills / projects / contact
+   Compact vertical rhythm so the page fits one viewport.
+   ============================================ */
+.onepage body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.onepage main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.onepage main > * {
+  width: 100%;
+}
+.onepage .site-header .wrap {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.onepage .site-footer {
+  padding: 16px 0 18px;
+}
+
+/* about.html */
+.onepage .detail-hero {
+  padding: 28px 0 4px;
+}
+.onepage .detail-body {
+  padding: 26px 0 18px;
+}
+.onepage .about-photo {
+  min-height: 240px;
+}
+.onepage .about-text p + p {
+  margin-top: 10px;
+}
+.onepage .detail-nav {
+  padding: 16px 0 22px;
+}
+
+/* contact.html */
+.onepage .contact-wrap {
+  padding: 34px 0 34px;
+}
+
+/* projects.html */
+.onepage .projects-intro {
+  padding: 28px 0 4px;
+}
+.onepage .project-grid {
+  padding: 24px 0 26px;
+}
+.onepage .project-card .thumb {
+  aspect-ratio: 16 / 10;
+}
+
+/* skills.html */
+.onepage .skills-hero {
+  padding: 24px 0 2px;
+}
+.onepage .about-skills {
+  padding: 20px 0 6px;
+}
+.onepage .skill-groups {
+  gap: 18px 36px;
+}
+.onepage .skill-group-title {
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+}
+
+/* only lock scrolling + vertically centre on screens tall/wide enough to fit it */
+@media (min-width: 900px) and (min-height: 700px) {
+  .onepage {
+    overflow: hidden;
+  }
+  .onepage main {
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   skills.html — dark navy theme (scoped)
+   ============================================ */
+body.skills-page {
+  background: linear-gradient(165deg, var(--blue-deep) 0%, var(--blue) 58%, #012c56 100%);
+  color: var(--paper);
+}
+
+
+/* repurpose the fixed ambient layer as a faint radar-ring field,
+   masked away near the top so the heading stays clean */
+body.skills-page::before {
+  background-color: transparent;
+  background-image:
+    repeating-radial-gradient(circle at 58% 48%,
+      rgba(238, 242, 247, 0.09) 0 1.5px,
+      transparent 1.5px 92px);
+  background-repeat: no-repeat;
+  background-size: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0, 0, 0, 0.45) 38%, #000 76%);
+          mask-image: linear-gradient(to bottom, transparent 0%, transparent 15%, rgba(0, 0, 0, 0.45) 38%, #000 76%);
+}
+
+/* nav + footer + floating button contrast on dark */
+.skills-page .site-header .logo,
+.skills-page .site-header nav a {
+  color: var(--paper);
+}
+.skills-page .site-header .logo:hover,
+.skills-page .site-header nav a:hover,
+.skills-page .site-header nav a:focus-visible {
+  color: var(--maize);
+}
+.skills-page .site-footer {
+  border-top-color: rgba(238, 242, 247, 0.12);
+  color: rgba(238, 242, 247, 0.55);
+}
+.skills-page .home-float.pill-btn {
+  border-color: var(--maize);
+}
+
+/* heading area — left-aligned serif + gold subtext */
+.skills-page .skills-hero {
+  padding: 64px 0 4px;
+  text-align: left;
+}
+.skills-page .skills-hero h1 {
+  font-size: clamp(2.2rem, 4.4vw, 3.1rem);
+  color: var(--paper);
+}
+
+/* category headings + gold count badge + gold-olive underline */
+.skills-page .skill-group-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--paper);
+  border-bottom-color: rgba(var(--maize-rgb), 0.38);
+}
+.skills-page .skill-count {
+  flex: none;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--blue);
+  background: var(--maize);
+  border-radius: 999px;
+  padding: 3px 7px;
+}
+
+/* tighter, smaller outlined pills */
+.skills-page .skill-groups {
+  gap: 30px 36px;
+}
+.skills-page .skill-list {
+  gap: 6px;
+}
+.skills-page .skill-list li {
+  background: transparent;
+  border-color: rgba(238, 242, 247, 0.26);
+  color: var(--paper);
+  padding: 6px 12px;
+  font-size: 0.78rem;
 }

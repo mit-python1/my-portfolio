@@ -164,28 +164,10 @@
     });
   }
 
-  /* ---------- 4. Skills & Tools "More" toggle ---------- */
-  function initSkillsToggle() {
-    var btn = document.querySelector(".skill-more");
-    if (!btn) return;
-    var extras = toArray(document.querySelectorAll(".skill-extra"));
-    if (!extras.length) return;
-
-    btn.addEventListener("click", function () {
-      var expanded = btn.getAttribute("aria-expanded") === "true";
-      extras.forEach(function (el) {
-        el.hidden = expanded;
-      });
-      btn.setAttribute("aria-expanded", expanded ? "false" : "true");
-      btn.textContent = expanded ? "+ More" : "Show Less";
-    });
-  }
-
   function init() {
     initReveal();
     initNav();
     initTilt();
-    initSkillsToggle();
   }
 
   if (document.readyState === "loading") {
