@@ -215,6 +215,9 @@ html.js .reveal.is-visible {
 
 .hero .hero-cta {
   margin: 30px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .hero-portrait {
